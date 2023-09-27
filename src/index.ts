@@ -1,7 +1,7 @@
 import "./main.css"
 import { faker } from '@faker-js/faker';
 import { Movie, Genre, Auth } from './services';
-import { registerUser, submitBtnReg, login, submitBtnLog, drawGenreList, genrelistDom } from './pages'
+import { registerUser, submitBtnReg, login, submitBtnLog, drawGenreList, genrelistDom, drawTableList } from './pages'
 const loginPageDom = document.querySelector('.loginPage') as HTMLElement;
 const registerPageDom = document.querySelector('.registerPage') as HTMLElement;
 const mainPageDom = document.querySelector('.mainPage') as HTMLElement;
@@ -64,8 +64,7 @@ submitBtnLog.addEventListener('submit', (e) => {
 function init() {
     Me();
     drawGenreList();
+    drawTableList();
 }
 
-setTimeout(() => {
-    init();
-}, 200);
+init();

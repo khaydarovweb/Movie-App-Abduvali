@@ -7,7 +7,6 @@ export function drawGenreList() {
         const fetch = async () =>{
     
             let res =  await Genre.List()
-            console.log(res);
             for (let i = 0; i < res.length; i++) {
                 genrelistDom.innerHTML += `<div class="singleGenre allGenres">${res[i].name}</div>`
             }
