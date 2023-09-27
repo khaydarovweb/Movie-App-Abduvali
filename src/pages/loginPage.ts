@@ -15,7 +15,9 @@ export async function login() {
         console.log('token = ', token);
         localStorage.setItem("userToken", token)
         window.location.reload()
+        alert('You have Logged In 👍')
     } catch (error) {
         console.error(error);
+        alert('Some Problem With Log In ');
     }
 }

@@ -1,7 +1,8 @@
 import "./main.css"
 import { faker } from '@faker-js/faker';
 import { Movie, Genre, Auth } from './services';
-import { registerUser, submitBtnReg, login, submitBtnLog, drawGenreList, genrelistDom, drawTableList } from './pages'
+import { registerUser, submitBtnReg, login, submitBtnLog, drawGenreList, drawTableList, createMovieFn } from './pages'
+
 const loginPageDom = document.querySelector('.loginPage') as HTMLElement;
 const registerPageDom = document.querySelector('.registerPage') as HTMLElement;
 const mainPageDom = document.querySelector('.mainPage') as HTMLElement;
@@ -9,6 +10,8 @@ const mainPageDom = document.querySelector('.mainPage') as HTMLElement;
 const homeNavBarBtn = document.querySelector('.HomeNavBar') as HTMLDivElement;
 const loginNavBarBtn = document.querySelector('.LoginNavBar') as HTMLDivElement;
 const registerNavBarBtn = document.querySelector('.RegisterNavBar') as HTMLDivElement;
+const createMoviePage = document.querySelector('.createMoviePage') as HTMLDivElement;
+const createMovie = document.querySelector('.btnAddMovie') as HTMLButtonElement;
 
 const token = localStorage.getItem("userToken");
 
@@ -40,8 +43,22 @@ registerNavBarBtn.onclick = () => {
     }
     else {
         mainPageDom.style.display = "none"
+        loginPageDom.style.display = "none" 
+        registerPageDom.style.display = "block";
+    }
+}
+createMovie.onclick = () => {
+    if (token) {
+        mainPageDom.style.display = "none"
+        loginPageDom.style.display = "none"
+        registerPageDom.style.display = "none";
+        createMoviePage.style.display = "block";
+    }
+    else {
+        mainPageDom.style.display = "none"
         loginPageDom.style.display = "none"
         registerPageDom.style.display = "block";
+        createMoviePage.style.display = "none";
     }
 }
 
@@ -67,6 +84,7 @@ function init() {
         drawTableList();
     }, 500);
     drawGenreList();
+    createMovieFn();
 }
 
 init();

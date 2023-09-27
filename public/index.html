@@ -47,6 +47,27 @@
 			<button type="submit" class="btn btn-primary">Log In</button>
 		</form>
 	</main>
+	<main class="createMoviePage" style="display: none;">
+		<form id="createMovie">
+			<div class="mb-3">
+				<label class="form-label">Movie Title</label>
+				<input type="text" class="form-control" id="movieTitle" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Genre Type</label>
+				<input type="text" class="form-control" id="movieGenreType" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Stock Number</label>
+				<input type="number" class="form-control" id="movieStockNum" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Rate Number</label>
+				<input type="number" class="form-control" id="movieRateNum" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Create Movie</button>
+		</form>
+	</main>
 	<main class="mainPage" style="display: flex;">
 		<div class="genreList">
 			<div class="singleGenre allGenre">All Genre</div>

@@ -54,7 +54,8 @@ header>div:hover {
 }
 
 .registerPage,
-.loginPage {
+.loginPage,
+.createMovie {
 	display: flex;
 	flex-direction: column;
 	align-self: center;
@@ -62,7 +63,8 @@ header>div:hover {
 }
 
 .registerPage input,
-.loginPage input {
+.loginPage input,
+.createMovie input {
 	width: 550px;
 }
 

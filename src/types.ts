@@ -3,7 +3,7 @@ export namespace IEntity {
     id: string;
     title: string;
     genre: Genre;
-    stock: number;
+    stock: string;
     rate: number;
     owner: string;
   }
