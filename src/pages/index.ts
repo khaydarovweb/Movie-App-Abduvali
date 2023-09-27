@@ -1,3 +1,3 @@
 // import * as MainPage from "./mainPage";
-// import * as LoginPage from "./LoginPage";
-// import * as RegisterPage from "./registerPage";
+export { registerUser, submitBtnReg } from "./registerPage";
+export { login, submitBtnLog } from "./loginPage";

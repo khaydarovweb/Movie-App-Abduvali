@@ -1,43 +1,60 @@
 import "./main.css"
 import { faker } from '@faker-js/faker';
 import { Movie, Genre, Auth } from './services';
-const btn = document.querySelector('button');
+import { registerUser, submitBtnReg, login, submitBtnLog } from './pages'
+const loginPageDom = document.querySelector('.loginPage') as HTMLElement;
+const registerPageDom = document.querySelector('.registerPage') as HTMLElement;
+const mainPageDom = document.querySelector('.mainPage') as HTMLElement;
 
-// const registerPage = document.createElement('main');
-// registerPage.innerHTML = `
-// <div class="mb-3">
-// <label for="formGroupExampleInput" class="form-label">User Name</label>
-//   <input type="text" class="form-control" id="inputUserName" required>
-// </div>
-// <div class="mb-3">
-// <label for="formGroupExampleInput2" class="form-label">Email</label>
-// <input type="email" class="form-control" id="inputEmail" required>
-// </div>
-// <div class="mb-3">
-// <label for="formGroupExampleInput2" class="form-label">Password</label>
-// <input type="password" class="form-control" id="inputPassword" required>
-// </div>
-// <div class="col-12">
-// <button type="submit" class="btn btn-primary" id="btnSubmit">Sign in</button>
-// </div>`;
+const homeNavBarBtn = document.querySelector('.HomeNavBar') as HTMLDivElement;
+const loginNavBarBtn = document.querySelector('.LoginNavBar') as HTMLDivElement;
+const registerNavBarBtn = document.querySelector('.RegisterNavBar') as HTMLDivElement;
 
-async function init() {
-  const fake = {
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-    name: faker.person.firstName(), 
-  };
+const token = localStorage.getItem("userToken");
 
-  const newUser = await Auth.Register(fake);
-  console.log('newUser = ', newUser);
-
-  const token = await Auth.Login({ email: fake.email, password: fake.password });
-  console.log('token = ', token);
-
-  const user = await Auth.Me(token);
-  console.log('user = ', user);
+try {
+    const fetch = async () => {
+        const user = await Auth.Me(token);
+        console.log('user = ', user);
+        loginNavBarBtn.innerText = user.name
+        registerNavBarBtn.innerText = "Log Out"
+    }
+    fetch()
+} catch (error: any) {
+    console.log(error);
 }
 
-btn.addEventListener('click', () => {
-  init();
+loginNavBarBtn.onclick = () => {
+    if (token) return;
+    registerPageDom.style.display = "none";
+    mainPageDom.style.display = "none";
+    loginPageDom.style.display = "block"
+}
+
+registerNavBarBtn.onclick = () => {
+    if (token) {
+        localStorage.clear()
+        window.location.href = "/"
+    }
+    else {
+        mainPageDom.style.display = "none"
+        loginPageDom.style.display = "none"
+        registerPageDom.style.display = "block";
+    }
+}
+
+homeNavBarBtn.onclick = () => {
+    loginPageDom.style.display = "none"
+    registerPageDom.style.display = "none";
+    mainPageDom.style.display = "block"
+}
+
+submitBtnReg.addEventListener('submit', (e) => {
+    e.preventDefault()
+    registerUser();
+});
+
+submitBtnLog.addEventListener('submit', (e) => {
+    e.preventDefault()
+    login();
 });

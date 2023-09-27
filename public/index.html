@@ -11,37 +11,43 @@
 
 <body>
 	<header>
-		<div class="Home">Vindly</div>
-		<div class="Login">Login</div>
-		<div class="Register">Register</div>
+		<div class="HomeNavBar">Vindly</div>
+		<div class="LoginNavBar">Login</div>
+		<div class="RegisterNavBar">Register</div>
 	</header>
-	<main class="loginPage">
+	<main class="registerPage" style="display: none;">
+		<form  id="btnSubmit">
 		<div class="mb-3">
-			<label class="form-label">Email</label>
-			<input type="email" class="form-control" id="emailInput">
+			<label for="formGroupExampleInput" class="form-label">User Name</label>
+			<input type="text" class="form-control" id="inputUserName" required>
 		</div>
 		<div class="mb-3">
-			<label class="form-label">Password</label>
-			<input type="password" class="form-control" id="passwordInput">
+			<label for="formGroupExampleInput2" class="form-label">Email</label>
+			<input type="email" class="form-control" id="inputEmail" required>
 		</div>
-		<button type="button" class="btn btn-primary">Log In</button>
+		<div class="mb-3">
+			<label for="formGroupExampleInput2" class="form-label">Password</label>
+			<input type="password" class="form-control" id="inputPassword" required>
+		</div>
+		<div class="col-12">
+			<button type="submit" class="btn btn-primary">Sign in</button>
+		</div>
+	</form>
 	</main>
-	<!-- <main class="registerPage">
-		<div class="mb-3">
-			<label class="form-label">Username</label>
-			<input type="text" class="form-control" id="usernameInput">
-		</div>
-		<div class="mb-3">
-			<label class="form-label">Email</label>
-			<input type="email" class="form-control" id="emailInput">
-		</div>
-		<div class="mb-3">
-			<label class="form-label">Password</label>
-			<input type="password" class="form-control" id="passwordInput">
-		</div>
-		<button type="button" class="btn btn-primary">Register</button>
-	</main> -->
-	<!-- <main class="mainPage">
+	<main class="loginPage" style="display: none;" >
+		<form id="submitBtn">
+			<div class="mb-3">
+				<label class="form-label">Email</label>
+				<input type="email" class="form-control" id="emailInput" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Password</label>
+				<input type="password" class="form-control" id="passwordInput">
+			</div>
+			<button type="submit" class="btn btn-primary">Log In</button>
+		</form>
+	</main>
+	<main class="mainPage" style="display: block;">
 		<div class="genreList">
 			<div class="singleGenre allGenres">All Genre</div>
 		</div>
@@ -63,7 +69,7 @@
 				<tbody></tbody>
 			</table>
 	</div>
-	</main> -->
+	</main>
 </body>
 
 </html>

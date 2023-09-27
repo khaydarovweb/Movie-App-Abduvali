@@ -1,9 +1,11 @@
+import { isToken } from 'typescript';
 import * as Mappers from '../mappers';
 import { IForm } from '../types';
 
 const baseURL = 'http://localhost:4000/api';
-const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBiYzRiMjljMWQ0ODRkMjU2Y2QwMTUiLCJuYW1lIjoiYXJzbG9uYmVrWFgiLCJlbWFpbCI6ImFyc0Bkb21haW4uY29tIiwiaWF0IjoxNjk1MjcwNjM2fQ.Q3rrZgDWdbgOLM8meKhaQEQ2_VNfTHjwXoGT1VzYcfs';
+const TOKEN = localStorage.getItem("userToken")
+
+console.log(TOKEN);
 
 export async function List() {
   const res = await fetch(`${baseURL}/movies`);
