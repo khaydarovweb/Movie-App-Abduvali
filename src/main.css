@@ -20,6 +20,7 @@ body {
 	align-items: center;
 	gap: 70px;
 	background-color: whitesmoke;
+	padding-top: 70px;
 }
 
 header {
@@ -31,6 +32,8 @@ header {
 	padding: 5px 0px 0px 10px;
 	border-bottom: 1px solid var(--gray-color);
 	background-color: white;
+	position: fixed;
+	top: 0px;
 }
 
 header>div {
@@ -64,10 +67,12 @@ header>div:hover {
 }
 
 .mainPage {
-	width: 70%;
+	width: 100%;
 	display: flex;
 	gap: 50px;
-	padding-top: 30px;
+	justify-content: center;
+	align-items: center;
+	
 }
 
 .genreList {

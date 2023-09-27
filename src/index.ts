@@ -1,7 +1,7 @@
 import "./main.css"
 import { faker } from '@faker-js/faker';
 import { Movie, Genre, Auth } from './services';
-import { registerUser, submitBtnReg, login, submitBtnLog } from './pages'
+import { registerUser, submitBtnReg, login, submitBtnLog, drawGenreList, genrelistDom } from './pages'
 const loginPageDom = document.querySelector('.loginPage') as HTMLElement;
 const registerPageDom = document.querySelector('.registerPage') as HTMLElement;
 const mainPageDom = document.querySelector('.mainPage') as HTMLElement;
@@ -12,16 +12,18 @@ const registerNavBarBtn = document.querySelector('.RegisterNavBar') as HTMLDivEl
 
 const token = localStorage.getItem("userToken");
 
-try {
-    const fetch = async () => {
-        const user = await Auth.Me(token);
-        console.log('user = ', user);
-        loginNavBarBtn.innerText = user.name
-        registerNavBarBtn.innerText = "Log Out"
+function Me() {
+    try {
+        const fetch = async () => {
+            const user = await Auth.Me(token);
+            console.log('user = ', user);
+            loginNavBarBtn.innerText = user.name
+            registerNavBarBtn.innerText = "Log Out"
+        }
+        fetch()
+    } catch (error: any) {
+        console.log(error);
     }
-    fetch()
-} catch (error: any) {
-    console.log(error);
 }
 
 loginNavBarBtn.onclick = () => {
@@ -46,7 +48,7 @@ registerNavBarBtn.onclick = () => {
 homeNavBarBtn.onclick = () => {
     loginPageDom.style.display = "none"
     registerPageDom.style.display = "none";
-    mainPageDom.style.display = "block"
+    mainPageDom.style.display = "flex"
 }
 
 submitBtnReg.addEventListener('submit', (e) => {
@@ -58,3 +60,12 @@ submitBtnLog.addEventListener('submit', (e) => {
     e.preventDefault()
     login();
 });
+
+function init() {
+    Me();
+    drawGenreList();
+}
+
+setTimeout(() => {
+    init();
+}, 200);
