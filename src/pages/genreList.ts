@@ -8,8 +8,10 @@ export function drawGenreList() {
     
             let res =  await Genre.List()
             for (let i = 0; i < res.length; i++) {
-                genrelistDom.innerHTML += `<div class="singleGenre allGenres">${res[i].name}</div>`
+                genrelistDom.innerHTML += `<div class="singleGenre ${res[i].name}">${res[i].name}</div>`
             }
+
+
         }
         fetch()
         

@@ -63,8 +63,10 @@ submitBtnLog.addEventListener('submit', (e) => {
 
 function init() {
     Me();
+    setTimeout(() => {
+        drawTableList();
+    }, 500);
     drawGenreList();
-    drawTableList();
 }
 
 init();
