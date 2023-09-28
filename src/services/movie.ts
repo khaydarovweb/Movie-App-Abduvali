@@ -4,7 +4,6 @@ import { IForm } from '../types';
 
 const baseURL = 'http://localhost:4000/api';
 const TOKEN = localStorage.getItem("userToken")
-
 console.log(TOKEN);
 
 export async function List() {

@@ -13,7 +13,6 @@ export function drawTableList() {
             try {
                 let res = await Movie.List();
                 const singleGenre = document.querySelectorAll('.singleGenre') as NodeListOf<HTMLDivElement>
-                console.log(singleGenre);
 
                 for (let j = 0; j < res.length; j++) {
                     tbody.innerHTML += `

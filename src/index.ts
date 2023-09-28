@@ -6,12 +6,13 @@ import { registerUser, submitBtnReg, login, submitBtnLog, drawGenreList, drawTab
 const loginPageDom = document.querySelector('.loginPage') as HTMLElement;
 const registerPageDom = document.querySelector('.registerPage') as HTMLElement;
 const mainPageDom = document.querySelector('.mainPage') as HTMLElement;
+const createMoviePage = document.querySelector('.createMoviePage') as HTMLDivElement;
 
 const homeNavBarBtn = document.querySelector('.HomeNavBar') as HTMLDivElement;
 const loginNavBarBtn = document.querySelector('.LoginNavBar') as HTMLDivElement;
 const registerNavBarBtn = document.querySelector('.RegisterNavBar') as HTMLDivElement;
-const createMoviePage = document.querySelector('.createMoviePage') as HTMLDivElement;
 const createMovie = document.querySelector('.btnAddMovie') as HTMLButtonElement;
+const addMovieBtn = document.querySelector('#movieRateNum') as HTMLButtonElement;
 
 const token = localStorage.getItem("userToken");
 
@@ -43,7 +44,7 @@ registerNavBarBtn.onclick = () => {
     }
     else {
         mainPageDom.style.display = "none"
-        loginPageDom.style.display = "none" 
+        loginPageDom.style.display = "none"
         registerPageDom.style.display = "block";
     }
 }
@@ -56,8 +57,8 @@ createMovie.onclick = () => {
     }
     else {
         mainPageDom.style.display = "none"
-        loginPageDom.style.display = "none"
-        registerPageDom.style.display = "block";
+        loginPageDom.style.display = "block"
+        registerPageDom.style.display = "none";
         createMoviePage.style.display = "none";
     }
 }
@@ -65,7 +66,8 @@ createMovie.onclick = () => {
 homeNavBarBtn.onclick = () => {
     loginPageDom.style.display = "none"
     registerPageDom.style.display = "none";
-    mainPageDom.style.display = "flex"
+    createMoviePage.style.display = "none";
+    mainPageDom.style.display = "flex";
 }
 
 submitBtnReg.addEventListener('submit', (e) => {
@@ -80,11 +82,10 @@ submitBtnLog.addEventListener('submit', (e) => {
 
 function init() {
     Me();
+    drawGenreList();
     setTimeout(() => {
         drawTableList();
     }, 500);
-    drawGenreList();
-    createMovieFn();
 }
 
 init();

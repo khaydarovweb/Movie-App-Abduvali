@@ -19,7 +19,9 @@ export async function registerUser() {
         console.log('newUser = ', newUser);
         registerPageDom.style.display = 'none';
         loginPageDom.style.display = 'block'
+        alert('Congratulations You Have Registered 👍')
     } catch (error: any) {
         console.log(error);
+        alert('Something Went Wrong On Register ❌')
     }
 }
